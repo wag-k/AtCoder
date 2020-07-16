@@ -14,9 +14,8 @@ import sys
 """
 #### 入力例 ####
 N, X = map(int, input().split())
-
 x = list(map(int, input().split()))
-
+S = [input() for n in range(N)]
 P = [0]*N
 Y = [0]*N
 for n in range(N):
