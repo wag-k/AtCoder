@@ -1,15 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import bisect
-import copy
-import collections
-import heapq
-import itertools
-import math
-import numpy as np
-from operator import itemgetter
-import scipy.misc
-import sys
 
 """
 #### 入力例 ####
@@ -23,13 +13,40 @@ for n in range(N):
 """
 
 
-N=int(input())
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
 
+def gauss(x):
+    mod = x % 1
+    res = x // 1
+    if 0. < mod:
+        res+=1
+    #print("x: "+str(x)+ ", res: "+str(res))
+    return res
+
+def check(x, k):
+    cnt = 0
+    for a in A:
+        cnt += gauss(a/x) - 1
+        if k < cnt:
+            return False
+    return True
+
+def bi(l, r):
+    #print(l, r)
+    if(r-l) <= 1:
+        return print(r)
+    mid = (l+r)//2
+    if check(mid, K):
+        bi(l, mid)
+    else:
+        bi(mid, r)
 
 def main():
-    print(N) 
+    A.sort(reverse=True)
+    bi(0, A[0])
     return
-    
+
 
 if __name__ == '__main__':
     main()

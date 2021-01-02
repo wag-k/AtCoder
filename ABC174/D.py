@@ -24,10 +24,16 @@ for n in range(N):
 
 
 N=int(input())
-
+c = list(map(str, input()))
 
 def main():
-    print(N) 
+    cnt = collections.Counter(c)
+    nr = cnt["R"]
+    res = 0
+    for n in range(nr):
+        if(c[n]=="W"):
+            res+=1
+    print(res)
     return
     
 
